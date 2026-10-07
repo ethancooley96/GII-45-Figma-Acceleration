@@ -1,0 +1,268 @@
+{
+  "format": "figma-jutro-handoff",
+  "version": "1.0",
+  "generatedAt": "2026-09-28T14:00:00.000Z",
+  "journey": {
+    "id": "customer-service-request-journey",
+    "name": "Customer Service Request Journey",
+    "status": "approved",
+    "figmaPageName": "Customer Service Request Journey / Generated screens",
+    "designSystem": {
+      "name": "Jutro-aligned component library",
+      "status": "Component names and component keys must be verified against the approved Figma library"
+    },
+    "responsiveFrames": [
+      { "name": "Desktop", "width": 1440 }
+    ],
+    "screens": [
+      {
+        "id": "screen-001",
+        "order": 1,
+        "name": "Request details",
+        "figmaFrameName": "Journey / Request details",
+        "description": "Please provide the information below to continue.",
+        "layout": {
+          "type": "form",
+          "columns": { "desktop": 2 }
+        },
+        "fields": [
+          {
+            "id": "field-001",
+            "label": "Customer name",
+            "inputType": "text",
+            "required": true,
+            "options": [],
+            "figmaComponent": "Form / Text Input",
+            "jutroComponent": "TextInput",
+            "cssClass": "jutro-text-input",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          },
+          {
+            "id": "field-002",
+            "label": "Email address",
+            "inputType": "email",
+            "required": true,
+            "options": [],
+            "figmaComponent": "Form / Email Input",
+            "jutroComponent": "TextInput",
+            "cssClass": "jutro-email-input",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          },
+          {
+            "id": "field-003",
+            "label": "Type of request",
+            "inputType": "select",
+            "required": true,
+            "options": ["Billing query", "Technical support", "Account change", "General enquiry"],
+            "figmaComponent": "Form / Select",
+            "jutroComponent": "Select",
+            "cssClass": "jutro-select",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          },
+          {
+            "id": "field-004",
+            "label": "Description of request",
+            "inputType": "textarea",
+            "required": true,
+            "options": [],
+            "figmaComponent": "Form / Text Area",
+            "jutroComponent": "TextArea",
+            "cssClass": "jutro-text-area",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          },
+          {
+            "id": "field-005",
+            "label": "Is this request urgent",
+            "inputType": "select",
+            "required": true,
+            "options": ["Yes", "No", "Not sure"],
+            "figmaComponent": "Form / Select",
+            "jutroComponent": "Select",
+            "cssClass": "jutro-select",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          }
+        ],
+        "conditionalSections": [
+          {
+            "id": "rule-001",
+            "sectionName": "Urgent Request Details",
+            "visibleWhen": {
+              "fieldId": "field-005",
+              "fieldLabel": "Is this request urgent",
+              "equals": "Yes"
+            },
+            "fields": [
+              {
+                "id": "field-006",
+                "label": "Urgent Request Details",
+                "inputType": "textarea",
+                "required": true,
+                "options": [],
+                "figmaComponent": "Form / Text Area",
+                "jutroComponent": "TextArea",
+                "cssClass": "jutro-text-area",
+                "states": {
+                  "default": true,
+                  "required": true,
+                  "error": false,
+                  "disabled": false
+                }
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "id": "action-001",
+            "label": "Save and continue later",
+            "actionType": "save",
+            "figmaComponent": "Button / Secondary",
+            "jutroComponent": "Button",
+            "variant": "secondary"
+          },
+          {
+            "id": "action-002",
+            "label": "Continue",
+            "actionType": "continue",
+            "figmaComponent": "Button / Primary",
+            "jutroComponent": "Button",
+            "variant": "primary"
+          }
+        ],
+        "prototype": {
+          "backScreenId": null,
+          "nextScreenId": "screen-002"
+        }
+      },
+      {
+        "id": "screen-002",
+        "order": 2,
+        "name": "Review request",
+        "figmaFrameName": "Journey / Review request",
+        "description": "Please review the details below before submitting your request.",
+        "layout": {
+          "type": "form",
+          "columns": { "desktop": 2 }
+        },
+        "fields": [
+          {
+            "id": "field-007",
+            "label": "Review confirmation",
+            "inputType": "select",
+            "required": true,
+            "options": ["Yes, the details are correct", "No, I need to make changes"],
+            "figmaComponent": "Form / Select",
+            "jutroComponent": "Select",
+            "cssClass": "jutro-select",
+            "states": {
+              "default": true,
+              "required": true,
+              "error": false,
+              "disabled": false
+            }
+          }
+        ],
+        "conditionalSections": [],
+        "actions": [
+          {
+            "id": "action-003",
+            "label": "Back",
+            "actionType": "back",
+            "figmaComponent": "Button / Secondary",
+            "jutroComponent": "Button",
+            "variant": "secondary"
+          },
+          {
+            "id": "action-004",
+            "label": "Continue",
+            "actionType": "continue",
+            "figmaComponent": "Button / Primary",
+            "jutroComponent": "Button",
+            "variant": "primary"
+          }
+        ],
+        "prototype": {
+          "backScreenId": "screen-001",
+          "nextScreenId": "screen-003"
+        }
+      },
+      {
+        "id": "screen-003",
+        "order": 3,
+        "name": "Request submitted",
+        "figmaFrameName": "Journey / Request submitted",
+        "description": "Your request has been submitted. Please keep your reference number safe.",
+        "layout": {
+          "type": "form",
+          "columns": { "desktop": 2 }
+        },
+        "fields": [
+          {
+            "id": "field-008",
+            "label": "Confirmation reference",
+            "inputType": "text",
+            "required": false,
+            "options": [],
+            "figmaComponent": "Form / Text Input",
+            "jutroComponent": "TextInput",
+            "cssClass": "jutro-text-input",
+            "states": {
+              "default": true,
+              "required": false,
+              "error": false,
+              "disabled": false
+            }
+          }
+        ],
+        "conditionalSections": [],
+        "actions": [
+          {
+            "id": "action-005",
+            "label": "Back",
+            "actionType": "back",
+            "figmaComponent": "Button / Secondary",
+            "jutroComponent": "Button",
+            "variant": "secondary"
+          },
+          {
+            "id": "action-006",
+            "label": "Submit",
+            "actionType": "continue",
+            "figmaComponent": "Button / Primary",
+            "jutroComponent": "Button",
+            "variant": "primary"
+          }
+        ],
+        "prototype": {
+          "backScreenId": "screen-002",
+          "nextScreenId": null
+        }
+      }
+    ]
+  }
+}

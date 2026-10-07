@@ -1,0 +1,14 @@
+{
+  "name": "alchemy-journey-to-figma",
+  "version": "0.1.0",
+  "description": "Figma plugin – Milestone 1: create an editable example journey screen.",
+  "scripts": {
+    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --loader:.html=text --target=es2017 --log-level=info",
+    "watch": "esbuild src/code.ts --bundle --outfile=dist/code.js --loader:.html=text --target=es2017 --watch --log-level=info"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.90.0",
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
+  }
+}

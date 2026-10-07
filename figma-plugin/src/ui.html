@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alchemy Journey to Figma</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: #172B4D;
+      background: #ffffff;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .plugin-title { font-size: 15px; font-weight: 600; color: #003F50; letter-spacing: -0.01em; }
+    .plugin-desc  { font-size: 12px; color: #667085; line-height: 1.5; margin-top: 3px; }
+    .divider      { height: 1px; background: #D9E3E7; }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: #8BAEB5; margin-bottom: 6px; }
+    textarea {
+      width: 100%; height: 110px; padding: 8px 10px;
+      font-family: 'Menlo', 'Consolas', monospace; font-size: 10px;
+      color: #172B4D; background: #F8FAFB;
+      border: 1px solid #D9E3E7; border-radius: 6px;
+      resize: vertical; outline: none;
+      line-height: 1.5;
+    }
+    textarea:focus { border-color: #008A91; box-shadow: 0 0 0 2px rgba(0,138,145,.12); }
+    textarea::placeholder { color: #B0BEC5; }
+    .btn {
+      display: block; width: 100%; padding: 9px 14px;
+      border: none; border-radius: 6px;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      text-align: center; transition: background 0.15s;
+    }
+    .btn-primary   { background: #003F50; color: #fff; }
+    .btn-primary:hover   { background: #002F3B; }
+    .btn-secondary { background: #EAF8F8; color: #003F50; border: 1px solid #A9DFE1; }
+    .btn-secondary:hover { background: #D4F2F2; }
+    .btn:disabled  { background: #D9E3E7!important; color: #667085!important; cursor: not-allowed; }
+    .status { font-size: 12px; line-height: 1.5; padding: 8px 10px; border-radius: 5px; display: none; }
+    .status.visible { display: block; }
+    .status.success { background: #EAF8F8; color: #003F50; border: 1px solid #008A91; }
+    .status.error   { background: #FFF0F0; color: #A8000D; border: 1px solid #F5A0A0; }
+    .version-tag { font-size: 10px; color: #D9E3E7; text-align: right; }
+    .or-row { display: flex; align-items: center; gap: 8px; }
+    .or-row span { flex: 1; height: 1px; background: #D9E3E7; }
+    .or-row em { font-size: 10px; color: #B0BEC5; font-style: normal; }
+  </style>
+</head>
+<body>
+
+  <div>
+    <div class="plugin-title">Alchemy Journey to Figma</div>
+    <div class="plugin-desc">Paste your Figma Handoff JSON to generate screens, or create a hardcoded example.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- JSON import -->
+  <div>
+    <div class="section-label">Paste Handoff JSON</div>
+    <textarea id="jsonInput" placeholder='Paste the JSON from Journey Studio → "Figma Handoff" tab → "Export Figma Handoff"'></textarea>
+  </div>
+
+  <button id="generateBtn" class="btn btn-primary">&#9654;&nbsp; Generate screens from JSON</button>
+
+  <div class="or-row"><span></span><em>or</em><span></span></div>
+
+  <button id="createBtn" class="btn btn-secondary">Create example screen</button>
+
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+
+  <span class="version-tag">v0.2 · Milestone 2</span>
+
+  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const createBtn   = document.getElementById('createBtn');
+    const jsonInput   = document.getElementById('jsonInput');
+    const statusEl    = document.getElementById('status');
+
+    function showStatus(msg, type) {
+      statusEl.textContent = msg;
+      statusEl.className = 'status visible ' + type;
+    }
+    function clearStatus() {
+      statusEl.textContent = '';
+      statusEl.className = 'status';
+    }
+    function setBusy(busy) {
+      generateBtn.disabled = busy;
+      createBtn.disabled   = busy;
+      generateBtn.textContent = busy ? 'Generating…' : '▶ Generate screens from JSON';
+    }
+
+    generateBtn.addEventListener('click', function () {
+      const raw = jsonInput.value.trim();
+      if (!raw) { showStatus('✗ Paste your Handoff JSON above first.', 'error'); return; }
+      let parsed;
+      try { parsed = JSON.parse(raw); } catch (e) { showStatus('✗ Invalid JSON: ' + e.message, 'error'); return; }
+      if (!parsed.journey || !Array.isArray(parsed.journey.screens)) {
+        showStatus('✗ JSON is missing "journey.screens". Export it from Journey Studio → Figma Handoff tab.', 'error');
+        return;
+      }
+      setBusy(true);
+      clearStatus();
+      parent.postMessage({ pluginMessage: { type: 'generate-from-handoff', payload: parsed } }, '*');
+    });
+
+    createBtn.addEventListener('click', function () {
+      setBusy(true);
+      clearStatus();
+      parent.postMessage({ pluginMessage: { type: 'create-example-screen' } }, '*');
+    });
+
+    window.onmessage = function (event) {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+      setBusy(false);
+      if (msg.type === 'success') showStatus('✓ ' + msg.message, 'success');
+      else if (msg.type === 'error') showStatus('✗ ' + msg.message, 'error');
+    };
+  </script>
+</body>
+</html>

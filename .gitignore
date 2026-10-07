@@ -1,0 +1,14 @@
+
+# graphify-axet
+.graphify/
+
+# Node dependencies and build output
+node_modules/
+dist/
+
+# Backup files
+*.bak
+
+# OS / editor files
+.DS_Store
+Thumbs.db

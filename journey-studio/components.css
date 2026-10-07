@@ -1,0 +1,100 @@
+.alchemy-ui .al-shell { display: grid; grid-template-columns: 238px minmax(0, 1fr); min-height: 100vh; }
+.alchemy-ui .al-sidebar { background: var(--al-navy); color: #fff; padding: 28px 18px; display: flex; flex-direction: column; gap: 24px; }
+.alchemy-ui .al-brand { padding: 0 10px; color: #fff; text-decoration: none; }
+.alchemy-ui .al-brand strong { display: block; font: 500 2rem/1 var(--al-font-heading); letter-spacing: -.065em; }
+.alchemy-ui .al-brand span { display: block; margin-top: 9px; color: #d3e0e7; font-size: .63rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.alchemy-ui .al-workspace { border: 1px solid rgb(255 255 255 / 18%); border-radius: var(--al-radius-control); padding: 11px 12px; font-size: .82rem; font-weight: 700; }
+.alchemy-ui .al-workspace small { display: block; color: #b3c8d2; font-size: .72rem; font-weight: 400; }
+.alchemy-ui .al-nav-label, .alchemy-ui .al-eyebrow { color: #b3c8d2; font-size: .68rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.alchemy-ui .al-nav { display: grid; gap: 4px; }
+.alchemy-ui .al-nav a { border-left: 3px solid transparent; border-radius: 0 var(--al-radius-control) var(--al-radius-control) 0; color: #d3e0e7; display: flex; align-items: center; gap: 10px; padding: 10px 12px; text-decoration: none; font-size: .85rem; }
+.alchemy-ui .al-nav a:hover, .alchemy-ui .al-nav a[aria-current="page"] { background: rgb(255 255 255 / 8%); color: #fff; }
+.alchemy-ui .al-nav a[aria-current="page"] { border-left-color: var(--al-gold); font-weight: 700; }
+.alchemy-ui .al-user { border-top: 1px solid rgb(255 255 255 / 17%); margin-top: auto; padding: 20px 8px 0; display: flex; align-items: center; gap: 10px; font-size: .82rem; }
+.alchemy-ui .al-user small { display: block; color: #b3c8d2; font-size: .72rem; }
+.alchemy-ui .al-app-main { min-width: 0; }
+.alchemy-ui .al-topbar { min-height: 72px; background: var(--al-surface); border-bottom: 1px solid var(--al-line); display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px clamp(18px, 3vw, 38px); font-size: .82rem; }
+.alchemy-ui .al-topbar p { color: var(--al-muted); }
+.alchemy-ui .al-content { max-width: 1500px; margin: auto; padding: 36px clamp(18px, 3vw, 38px) 70px; }
+.alchemy-ui .al-page-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+.alchemy-ui .al-eyebrow { color: #738999; margin-bottom: 8px; }
+.alchemy-ui .al-page-heading p { color: var(--al-muted); margin-top: 7px; max-width: 680px; }
+.alchemy-ui .al-section { margin-top: 32px; }
+.alchemy-ui .al-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 15px; }
+.alchemy-ui .al-muted { color: var(--al-muted); }
+.alchemy-ui .al-card { background: var(--al-surface); border: 1px solid var(--al-line); border-radius: var(--al-radius-card); padding: 22px; }
+.alchemy-ui .al-card--compact { padding: 17px 19px; }
+.alchemy-ui .al-grid { display: grid; gap: 16px; }
+.alchemy-ui .al-grid--stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.alchemy-ui .al-grid--cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.alchemy-ui .al-stat-label { color: var(--al-muted); font-size: .78rem; }
+.alchemy-ui .al-stat-value { display: block; margin: 5px 0; color: var(--al-navy); font: 700 2rem/1.2 var(--al-font-heading); letter-spacing: -.04em; }
+.alchemy-ui .al-stat-note { color: var(--al-muted); font-size: .76rem; }
+.alchemy-ui .al-button { appearance: none; border: 1px solid var(--al-line); border-radius: var(--al-radius-control); display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 15px; background: #fff; color: var(--al-navy); text-decoration: none; font-size: .82rem; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.alchemy-ui .al-button:hover { filter: brightness(.96); }
+.alchemy-ui .al-button--primary { background: var(--al-navy); border-color: var(--al-navy); color: #fff; }
+.alchemy-ui .al-button--quiet { border-color: transparent; background: transparent; padding-inline: 4px; }
+.alchemy-ui .al-field { display: grid; gap: 6px; min-width: 0; color: var(--al-ink); font-size: .8rem; font-weight: 700; }
+.alchemy-ui .al-input, .alchemy-ui .al-select { width: 100%; min-height: 40px; border: 1px solid var(--al-line); border-radius: var(--al-radius-control); background: #fff; color: var(--al-ink); padding: 9px 12px; font-size: .86rem; font-weight: 400; }
+.alchemy-ui .al-input::placeholder { color: #788c98; }
+.alchemy-ui .al-toolbar { display: flex; align-items: end; gap: 10px; flex-wrap: wrap; }
+.alchemy-ui .al-toolbar .al-field { flex: 1 1 190px; }
+.alchemy-ui .al-chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.alchemy-ui .al-chip { border: 1px solid var(--al-line); border-radius: var(--al-radius-sm); background: #f1f5f8; color: var(--al-navy); display: inline-flex; align-items: center; padding: 5px 8px; font-size: .76rem; line-height: 1.25; }
+.alchemy-ui .al-chip--confirmed { background: #e7f0f4; border-color: #d0e1e9; font-weight: 700; }
+.alchemy-ui .al-status { border-radius: var(--al-radius-sm); display: inline-flex; align-items: center; padding: 4px 8px; background: #e7f0f4; color: var(--al-navy); font-size: .73rem; font-weight: 700; white-space: nowrap; }
+.alchemy-ui .al-status--pending { background: var(--al-gold-soft); color: #685111; }
+.alchemy-ui .al-status--negative { background: var(--al-danger-soft); color: var(--al-danger); }
+.alchemy-ui .al-person-head { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
+.alchemy-ui .al-person-head h3 { font-size: 1.05rem; }
+.alchemy-ui .al-person-role { color: var(--al-muted); font-size: .83rem; margin-top: 4px !important; }
+.alchemy-ui .al-person-meta { color: var(--al-muted); font-size: .76rem; margin: 12px 0 15px !important; }
+.alchemy-ui .al-avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #e1e9ed; color: #597485; font: 700 .92rem var(--al-font-heading); }
+.alchemy-ui .al-avatar--large { width: 68px; height: 68px; border-radius: 8px; background: var(--al-navy); color: #fff; font-size: 1.5rem; }
+.alchemy-ui .al-card-footer { border-top: 1px solid var(--al-line); display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 16px; padding-top: 13px; font-size: .77rem; }
+.alchemy-ui .al-tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--al-line); }
+.alchemy-ui .al-tabs button { border: 0; border-bottom: 2px solid transparent; background: none; color: var(--al-muted); padding: 0 3px 12px; font-size: .88rem; font-weight: 700; }
+.alchemy-ui .al-tabs button[aria-selected="true"] { border-bottom-color: var(--al-gold); color: var(--al-navy); }
+.alchemy-ui .al-callout { border: 1px solid #dce5ec; border-radius: 8px; background: var(--al-blue-soft); color: var(--al-navy); padding: 16px 18px; }
+.alchemy-ui .al-callout--attention { border-color: #eddfbd; background: #fffaf0; }
+.alchemy-ui .al-callout p { color: var(--al-muted); margin-top: 3px; font-size: .83rem; }
+.alchemy-ui .al-detail { overflow: hidden; padding: 0; }
+.alchemy-ui .al-detail-header { border-top: 5px solid var(--al-gold); border-bottom: 1px solid var(--al-line); padding: 30px; display: flex; align-items: center; gap: 20px; }
+.alchemy-ui .al-detail-header p { color: var(--al-muted); }
+.alchemy-ui .al-detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; }
+.alchemy-ui .al-detail-main { padding: 0 30px; }
+.alchemy-ui .al-detail-aside { border-left: 1px solid var(--al-line); background: #fafbfc; padding: 0 24px; }
+.alchemy-ui .al-detail-section { border-bottom: 1px solid var(--al-line); padding: 24px 0; }
+.alchemy-ui .al-detail-section:last-child { border-bottom: 0; }
+.alchemy-ui .al-detail-section h2 { margin-bottom: 12px; font-size: 1.12rem; }
+.alchemy-ui .al-detail-section p { color: #405c6b; }
+.alchemy-ui .al-list { list-style: none; padding: 0; margin: 0; }
+.alchemy-ui .al-list li { border-bottom: 1px solid var(--al-line); padding: 10px 0; }
+.alchemy-ui .al-list li:last-child { border-bottom: 0; }
+.alchemy-ui .al-list small { display: block; color: var(--al-muted); }
+.alchemy-ui .al-dialog { border: 0; border-radius: 15px; width: min(92vw, 520px); padding: 26px; color: var(--al-ink); box-shadow: 0 30px 100px rgb(20 44 40 / 25%); }
+.alchemy-ui .al-dialog::backdrop { background: rgb(21 46 36 / 38%); backdrop-filter: blur(4px); }
+.alchemy-ui .al-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--al-line); padding-bottom: 14px; margin-bottom: 18px; }
+.alchemy-ui .al-dialog-head h2 { font-size: 1.15rem; }
+.alchemy-ui .al-dialog .al-list { margin: 14px 0 20px; }
+.alchemy-ui [hidden] { display: none !important; }
+@media (max-width: 1100px) {
+  .alchemy-ui .al-grid--stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .alchemy-ui .al-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .alchemy-ui .al-detail-layout { grid-template-columns: 1fr; }
+  .alchemy-ui .al-detail-aside { border-left: 0; border-top: 1px solid var(--al-line); }
+}
+@media (max-width: 700px) {
+  .alchemy-ui .al-shell { display: block; }
+  .alchemy-ui .al-sidebar { padding: 15px 18px; gap: 13px; }
+  .alchemy-ui .al-brand strong { font-size: 1.5rem; }
+  .alchemy-ui .al-workspace, .alchemy-ui .al-nav-label, .alchemy-ui .al-user { display: none; }
+  .alchemy-ui .al-nav { display: flex; gap: 2px; overflow-x: auto; }
+  .alchemy-ui .al-nav a { flex: none; padding: 7px 10px; font-size: .78rem; }
+  .alchemy-ui .al-topbar { min-height: 55px; }
+  .alchemy-ui .al-content { padding-top: 25px; }
+  .alchemy-ui .al-page-heading { align-items: start; flex-direction: column; }
+  .alchemy-ui .al-grid--stats, .alchemy-ui .al-grid--cards { grid-template-columns: 1fr; }
+  .alchemy-ui .al-detail-header { padding: 22px; }
+  .alchemy-ui .al-detail-main, .alchemy-ui .al-detail-aside { padding-inline: 22px; }
+}

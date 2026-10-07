@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.alchemy-ui {
+  --al-navy: #00384c;
+  --al-gold: #f2c444;
+  --al-ink: #173e50;
+  --al-muted: #647986;
+  --al-canvas: #f3f5f7;
+  --al-surface: #fff;
+  --al-line: #dce4e9;
+  --al-blue-soft: #edf3f7;
+  --al-gold-soft: #fff4d2;
+  --al-danger: #a65f44;
+  --al-danger-soft: #f9e9e3;
+  --al-radius-sm: 5px;
+  --al-radius-control: 7px;
+  --al-radius-card: 10px;
+  --al-shadow-raised: 0 10px 32px rgb(20 44 40 / 12%);
+  --al-font-body: Avenir, Figtree, Arial, sans-serif;
+  --al-font-heading: Montserrat, Figtree, Arial, sans-serif;
+  color: var(--al-ink);
+  background: var(--al-canvas);
+  font: 400 14px/1.6 var(--al-font-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.alchemy-ui *, .alchemy-ui *::before, .alchemy-ui *::after { box-sizing: border-box; }
+.alchemy-ui h1, .alchemy-ui h2, .alchemy-ui h3, .alchemy-ui p { margin: 0; }
+.alchemy-ui h1, .alchemy-ui h2, .alchemy-ui h3 { color: var(--al-navy); font-family: var(--al-font-heading); line-height: 1.3; }
+.alchemy-ui h1 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -.035em; }
+.alchemy-ui h2 { font-size: 1.2rem; font-weight: 700; letter-spacing: -.02em; }
+.alchemy-ui h3 { font-size: 1rem; font-weight: 700; }
+.alchemy-ui button, .alchemy-ui input, .alchemy-ui select, .alchemy-ui textarea { font: inherit; }
+.alchemy-ui button { cursor: pointer; }
+.alchemy-ui button:disabled { opacity: .5; cursor: not-allowed; }
+.alchemy-ui a { color: var(--al-navy); }
+.alchemy-ui :is(button, a, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--al-gold);
+  outline-offset: 3px;
+}

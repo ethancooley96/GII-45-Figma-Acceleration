@@ -1,0 +1,7 @@
+{
+  "name": "Alchemy Journey to Figma",
+  "id": "alchemy-journey-to-figma-v1",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "editorType": ["figma"]
+}
