@@ -466,21 +466,9 @@ function gwSaveWidget() {
 }
 
 /* ═══════════════════════════════════════════════════
-   AI MODE & GENERATE
+   AI GENERATE (overridden by app-ai-patch.js)
    ═══════════════════════════════════════════════════ */
-var _aiMode = 'journey';
-function setAiMode(mode) {
-  _aiMode = mode;
-  document.querySelectorAll('.ai-mode-btn').forEach(function(b){ b.classList.remove('active'); });
-  var btn = document.querySelector('.ai-mode-btn[data-mode="'+mode+'"]');
-  if(btn) btn.classList.add('active');
-  var hint = $id('ai-hint-text');
-  if(hint) hint.textContent = (mode==='pcf')
-    ? 'Describe a PCF screen and AI will generate its widget layout.'
-    : (mode==='edit')
-      ? 'Describe how to change the current screen — AI will update it in place.'
-      : 'Describe a screen or journey and AI will generate it for you.';
-}
+var _aiMode = 'journey'; /* kept for legacy compatibility only */
 
 function aiGenerate() {
   var prompt = ($id('ai-prompt')||{value:''}).value.trim();
@@ -534,7 +522,7 @@ function aiGenerate() {
   }
 
   var endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-  var headers  = { 'Content-Type':'application/json', 'Authorization':'Bearer '+apiKey, 'HTTP-Referer':'https://ai-journey-studio', 'X-Title':'AI Journey Studio' };
+  var headers  = { 'Content-Type':'application/json', 'Authorization':'Bearer '+apiKey, 'HTTP-Referer':'https://alchemy-journey-studio', 'X-Title':'Alchemy Journey Studio' };
   var body     = JSON.stringify({ model:model||'anthropic/claude-sonnet-5.5', messages:[{role:'system',content:systemPrompt},{role:'user',content:userPrompt}], temperature:0.3 });
 
   fetch(endpoint, { method:'POST', headers:headers, body:body })
@@ -707,7 +695,7 @@ function resetJourney() {
   S.journey=null; S.screens=[]; S.cur=null; S.dirty=false;
   localStorage.removeItem('aijs');
   var sn=$id('sidebarJourneyName'); if(sn) sn.innerHTML='<small>Current Journey</small>No journey loaded';
-  var tt=$id('topbarTitle'); if(tt) tt.textContent='AI Journey Studio';
+  var tt=$id('topbarTitle'); if(tt) tt.textContent='Alchemy Journey Studio';
   var ts=$id('topbarSub');   if(ts) ts.textContent='Create or import a journey to get started';
   ['addScreenBtn','topAddScreenBtn','aiBtn'].forEach(function(id){var e=$id(id);if(e)e.disabled=true;});
   renderList(); showWelcome(); markSaved(); toast('Reset ✓');
@@ -731,7 +719,7 @@ function downloadHandoffJSON() {
   _downloadText(JSON.stringify(payload,null,2), (S.journey.name||'journey').replace(/\s+/g,'-').toLowerCase()+'-handoff.json', 'application/json');
 }
 function downloadCSS() {
-  var lines = ['/* AI Journey Studio — generated CSS */'];
+  var lines = ['/* Alchemy Journey Studio — generated CSS */'];
   S.screens.forEach(function(s){
     var cls = '.screen-'+s.id;
     lines.push(cls+' { /* '+s.name+' */ }');

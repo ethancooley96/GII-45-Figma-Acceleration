@@ -87,7 +87,12 @@ function renderList(){
       '<button class="icon-btn danger" onclick="deleteScreenById(\''+s.id+'\')">✕</button></div>';
   }).join('');
 }
-function showWelcome(){show('welcomeView','flex');show('editorView','none');}
+function showWelcome(){
+  show('welcomeView','flex');show('editorView','none');
+  /* Hide the "add to screen" toggle when no screen is active */
+  var tr=$id('aiScreenToggleRow'); if(tr) tr.style.display='none';
+  var h=$id('ai-hint-text'); if(h) h.textContent='💡 Select a screen to add fields, or describe a full journey to generate screens.';
+}
 function showEditor(s){
   show('welcomeView','none');show('editorView','block');
   setVal('f-name',s.name);setVal('f-type',s.type);setVal('f-step',s.step);setVal('f-desc',s.description);setVal('f-cta',s.cta);setVal('f-back',s.backLabel);setVal('f-error',s.errorMessage);setVal('f-notes',s.notes);
@@ -95,6 +100,11 @@ function showEditor(s){
   setVal('f-aria-title',(s.accessibility||{}).pageTitle);
   var et=$id('editorTitle');if(et)et.textContent=s.name;
   var es=$id('editorSub');if(es)es.textContent='Step '+(s.step||'?')+' · '+s.type;
+  /* Show the "add to screen" toggle and default to checked */
+  var tr=$id('aiScreenToggleRow'); if(tr) tr.style.display='flex';
+  var lbl=$id('aiScreenToggleLabel'); if(lbl) lbl.textContent='Add fields to "'+s.name+'"';
+  var cb=$id('aiAddToScreen'); if(cb) cb.checked=true;
+  var h=$id('ai-hint-text'); if(h) h.textContent='💡 Toggle off to generate new screens instead.';
   renderSummary(s);renderTags();renderFields();_updateTab();
 }
 function updateScreenField(f,v){var s=cur();if(!s)return;s[f]=v;if(f==='name'){var e=$id('editorTitle');if(e)e.textContent=v;renderList();}renderSummary(s);markDirty();}
@@ -163,10 +173,6 @@ function renderFields(){
       '<span class="req-input"><input type="checkbox"'+(f.required?' checked':'')+' onchange="updateField('+i+',\'required\',this.checked)"></span>'+
       '<button class="icon-btn danger" onclick="removeField('+i+')">✕</button>'+
       jBadge+
-      '<div class="field-row-section">'+
-        '<span class="field-row-section-label">Section:</span>'+
-        '<input class="field-row-section-inp" value="'+esc(f.section||'')+'" placeholder="e.g. Plan Info, Payment Details" oninput="updateField('+i+',\'section\',this.value)">'+
-      '</div>'+
     '</div>';
   }).join('');
 }
