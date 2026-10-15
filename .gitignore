@@ -4,6 +4,7 @@
 
 # Node dependencies and build output
 node_modules/
+videos/
 dist/
 
 # Backup files
