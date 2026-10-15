@@ -470,8 +470,6 @@ function gwSaveWidget() {
    ═══════════════════════════════════════════════════ */
 var _aiMode = 'journey'; /* kept for legacy compatibility only */
 
-/* Default shared API key — users can override in ⚙ Settings */
-var _DEFAULT_API_KEY = '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';
 
 function aiGenerate() {
   var prompt = ($id('ai-prompt')||{value:''}).value.trim();
@@ -1005,7 +1003,7 @@ var _JUTRO_MAP = {
   var _savedModel = localStorage.getItem('aijs_model') || 'anthropic/claude-sonnet-5.5';
   localStorage.setItem('aijs_provider', 'openrouter');
   S.settings = {
-    apiKey:     localStorage.getItem('aijs_apiKey')     || _DEFAULT_API_KEY,
+    apiKey:     localStorage.getItem('aijs_apiKey')     || '',
     provider:   'openrouter',
     model:      _savedModel,
     maxScreens: localStorage.getItem('aijs_maxScreens') || '3'
