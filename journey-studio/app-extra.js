@@ -471,7 +471,7 @@ function gwSaveWidget() {
 var _aiMode = 'journey'; /* kept for legacy compatibility only */
 
 /* Default shared API key — users can override in ⚙ Settings */
-var _DEFAULT_API_KEY = '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';
+var _DEFAULT_API_KEY = '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';
 
 function aiGenerate() {
   var prompt = ($id('ai-prompt')||{value:''}).value.trim();
