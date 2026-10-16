@@ -454,13 +454,13 @@
 
           <!-- Fields Tab -->
           <div class="workspace" id="tab-fields" style="display:none">
-            <!-- View toggle toolbar -->
+            <!-- Fields toolbar -->
             <div class="fields-view-toolbar">
-              <div class="fields-view-toggle">
-                <button class="fields-view-btn active" data-view="list" onclick="switchFieldsView('list')">&#x1F4CB; Field List</button>
-                <button class="fields-view-btn" data-view="layout" onclick="switchFieldsView('layout')">&#x1F5A5; Screen Layout</button>
+              <span style="font-size:.82rem;font-weight:700;color:var(--al-navy)">&#x1F4CB; Field List</span>
+              <div style="display:flex;align-items:center;gap:10px;margin-left:auto">
+                <button class="btn small secondary" id="advancedLayoutBtn" onclick="switchFieldsView('layout')" style="font-size:.72rem;padding:4px 10px;opacity:0.7" title="Open the PCF Screen Layout designer">⚙ Advanced layout</button>
+                <button class="btn small" id="fieldsAddBtn" onclick="addField()">+ Add Field</button>
               </div>
-              <button class="btn small" id="fieldsAddBtn" onclick="addField()">+ Add Field</button>
             </div>
 
             <!-- Field list view -->

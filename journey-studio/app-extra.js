@@ -24,16 +24,31 @@ var _pcfBadgeMode = false;
 
 function switchFieldsView(v) {
   _fieldsView = v;
-  document.querySelectorAll('.fields-view-btn').forEach(function(b){ b.classList.remove('active'); });
-  var btn = document.querySelector('.fields-view-btn[data-view="'+v+'"]');
-  if(btn) btn.classList.add('active');
-  var listWrap   = document.getElementById('fieldsListWrap');
-  var layoutWrap = document.getElementById('fieldScreenLayout');
-  var addBtn     = document.getElementById('fieldsAddBtn');
+  var listWrap    = document.getElementById('fieldsListWrap');
+  var layoutWrap  = document.getElementById('fieldScreenLayout');
+  var addBtn      = document.getElementById('fieldsAddBtn');
+  var advBtn      = document.getElementById('advancedLayoutBtn');
+  var toolbar     = document.querySelector('.fields-view-toolbar');
   if(listWrap)   listWrap.style.display   = (v === 'list'   ? '' : 'none');
   if(layoutWrap) layoutWrap.style.display = (v === 'layout' ? '' : 'none');
   if(addBtn) addBtn.style.display = (v === 'list' ? '' : 'none');
-  if(v === 'layout') renderFieldsScreenLayout();
+  if(advBtn) advBtn.style.display = (v === 'list' ? '' : 'none');
+  /* Show/hide a back button when in layout view */
+  var backBtn = document.getElementById('layoutBackBtn');
+  if(v === 'layout') {
+    if(!backBtn && toolbar) {
+      backBtn = document.createElement('button');
+      backBtn.id = 'layoutBackBtn';
+      backBtn.className = 'btn small secondary';
+      backBtn.style.cssText = 'font-size:.72rem;padding:4px 10px;';
+      backBtn.textContent = '← Back to Field List';
+      backBtn.onclick = function(){ switchFieldsView('list'); };
+      toolbar.appendChild(backBtn);
+    }
+    renderFieldsScreenLayout();
+  } else {
+    if(backBtn) backBtn.remove();
+  }
 }
 
 /* ═══════════════════════════════════════════════════
